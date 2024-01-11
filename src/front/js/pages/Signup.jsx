@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext.js";
 import { Navigate } from "react-router-dom";
 
-export const Login = () =>{
+export const Signup = () =>{
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState();
+
     const { store, actions } = useContext(Context);
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState();
 
     const handleOnClick = async () => {
-        const url = process.env.BACKEND_URL + "/api/login";
+        const url = process.env.BACKEND_URL + "/api/signup";
         const options = {
             method: "POST",
             body: JSON.stringify({email, password}),
@@ -31,7 +32,8 @@ export const Login = () =>{
     return(
         store.isLoggedIn ? <Navigate to='/private' /> :
         <div>
-            <h1 className="text-center">Login</h1>
+            <h1 className="text-center">Signup</h1>
+            <h4 className="text-center">Create user</h4>
             <div className="m-3">
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
@@ -44,11 +46,7 @@ export const Login = () =>{
                   <input type="password" className="form-control" id="exampleInputPassword1"
                         value={password} onChange={(e) => setPassword(e.target.value)}></input>
                 </div>
-                <div className="mb-3 form-check">
-                  <input type="checkbox" className="form-check-input" id="exampleCheck1"></input>
-                  <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-                </div>
-                <button className="btn btn-success m-2" onClick={handleOnClick}>Login</button>
+                <button className="btn btn-success m-2" onClick={handleOnClick}>Signup</button>
             </div>
         </div>
     )

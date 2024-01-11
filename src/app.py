@@ -72,7 +72,7 @@ def serve_any_other_file(path):
     return response
 
 
-@app.route('/users', methods=['GET', 'POST'])
+@app.route('/users', methods=['GET'])
 def handle_users():
     if request.method == 'GET':
         response_body = {}
@@ -85,17 +85,6 @@ def handle_users():
         # Opcion 2: results['users'] = [row.serialize() for row in users]
         response_body['message'] = 'Listado de usuarios'
         response_body['results'] = results
-        return response_body, 200
-    if request.method == 'POST':
-        response_body = {}
-        data = request.json
-        user = User( email = data.get('email'),
-                     password = data.get('password'),
-                     is_active = True,
-                     )
-        db.session.add(user)
-        db.session.commit()
-        response_body['user'] = user.serialize()
         return response_body, 200
 
 

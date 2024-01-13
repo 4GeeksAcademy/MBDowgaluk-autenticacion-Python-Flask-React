@@ -13,7 +13,7 @@ export const Home = () => {
 			<div className="row">
 			<div className="card my-2">
   				<div className="card-body">
-    				<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    				<p className="card-text">Don't have an account created? Click "signup" to create one!</p>
   				</div>
 				<Link to="/signup">
 					<button className="btn btn-primary btn-lg m-3">Signup</button>
@@ -21,7 +21,7 @@ export const Home = () => {
 			</div>
 			<div className="card my-2">
   				<div className="card-body">
-    				<p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    				<p className="card-text">If you already have an account created, access it by clicking on "Login"</p>
   				</div>
 				<Link to="/login">
 					<button className="btn btn-success btn-lg m-3">Login</button>
